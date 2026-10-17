@@ -72,6 +72,20 @@ code { background: var(--accent-soft); padding: 1px 6px; border-radius: 4px; fon
 .checklist { list-style: none; padding: 0; columns: 2; }
 .checklist li { padding: 6px 0 6px 28px; position: relative; break-inside: avoid; }
 .checklist li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.photo-section { margin-top: -8px; }
+.photo-band { position: relative; margin: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 32px rgba(17, 24, 39, 0.14); }
+.photo-band img { display: block; width: 100%; height: clamp(240px, 42vw, 460px); object-fit: cover; object-position: center 40%; }
+.photo-band figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 24px 16px; color: #fff; font-weight: 600; font-size: 0.95rem;
+  background: linear-gradient(transparent, rgba(10, 12, 30, 0.7));
+}
+.hero-photo {
+  background: linear-gradient(rgba(16, 18, 44, 0.72), rgba(16, 18, 44, 0.72)), var(--hero-img) center 40% / cover no-repeat;
+  color: #fff;
+}
+.hero-photo h1 { color: #fff; }
+.hero-photo .lead { color: rgba(255, 255, 255, 0.85); }
+.hero-photo .pill-nav a { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.3); color: #fff; }
 .team-photo { margin: 0; padding: 24px; background: rgb(247, 248, 253); }
 .team-photo img { display: block; width: 100%; max-width: 900px; height: auto; margin: 0 auto; }
 .cta-band { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 56px 0; }
