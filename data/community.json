@@ -1,0 +1,51 @@
+{
+  "_note": "All people, funds, startups, perks and events in this file are fictional demo data.",
+  "startups": [
+    {"name": "NovaShield", "sector": "Cyber", "stage": "Seed"},
+    {"name": "LedgerLoop", "sector": "FinTech", "stage": "Pre-Seed"},
+    {"name": "CareSignal", "sector": "HealthTech", "stage": "Seed"},
+    {"name": "ShelfSense", "sector": "Retail", "stage": "Pre-Seed"},
+    {"name": "MetricMesh", "sector": "Data", "stage": "Seed"},
+    {"name": "StackPilot", "sector": "Cloud", "stage": "Pre-Seed"},
+    {"name": "GridWise", "sector": "Climate", "stage": "Seed"},
+    {"name": "RouteKit", "sector": "Logistics", "stage": "Pre-Seed"}
+  ],
+  "mentors": [
+    {"name": "Dana Rosen", "title": "Former VP Marketing at a B2B SaaS unicorn", "highlight": "Go-to-market", "sectors": ["SaaS", "Growth"]},
+    {"name": "Avi Kaplan", "title": "Two-time CISO at public tech companies", "highlight": "Cyber investor", "sectors": ["Cyber"]},
+    {"name": "Lena Brooks", "title": "Former CPO at an enterprise software company", "highlight": "Product strategy", "sectors": ["SaaS", "Product"]},
+    {"name": "Yoav Stern", "title": "Founder and CTO, acquired DevSecOps startup", "highlight": "Technical due diligence", "sectors": ["Cyber", "Cloud"]},
+    {"name": "Rachel Moss", "title": "Angel investor in AI and defense tech", "highlight": "Fundraising", "sectors": ["AI"]},
+    {"name": "Tom Weiss", "title": "Former Head of Partnerships at a payments company", "highlight": "U.S. partnerships", "sectors": ["FinTech"]},
+    {"name": "Noga Eldar", "title": "CEO of an acquired digital health startup", "highlight": "Regulated markets", "sectors": ["HealthTech"]},
+    {"name": "Ben Carter", "title": "Former VP Sales, built a U.S. sales team from zero", "highlight": "Sales hiring", "sectors": ["SaaS", "Sales"]}
+  ],
+  "investors": [
+    {"name": "Maya Ellis", "title": "Partner", "fund": "Northbridge Ventures", "city": "New York", "stages": ["Seed", "Series A"], "sectors": ["SaaS", "FinTech"], "lead_investments": 42},
+    {"name": "Jonah Price", "title": "Principal", "fund": "Harborline Capital", "city": "Boston", "stages": ["Seed"], "sectors": ["HealthTech", "AI"], "lead_investments": 18},
+    {"name": "Sara Lin", "title": "Managing Partner", "fund": "Cedar Peak Partners", "city": "San Francisco", "stages": ["Pre-Seed", "Seed"], "sectors": ["AI", "Data"], "lead_investments": 65},
+    {"name": "Eli Navarro", "title": "Partner", "fund": "Bluefield VC", "city": "Austin", "stages": ["Seed", "Series A"], "sectors": ["Cyber", "Cloud"], "lead_investments": 27},
+    {"name": "Olivia Grant", "title": "Associate", "fund": "Summit Arc", "city": "Chicago", "stages": ["Series A"], "sectors": ["FinTech"], "lead_investments": 9},
+    {"name": "Ron Avital", "title": "General Partner", "fund": "Meridian Seed", "city": "Tel Aviv", "stages": ["Pre-Seed"], "sectors": ["Cyber", "AI"], "lead_investments": 33},
+    {"name": "Grace Hall", "title": "Partner", "fund": "Evergreen Health Fund", "city": "San Diego", "stages": ["Seed", "Series A"], "sectors": ["HealthTech"], "lead_investments": 21},
+    {"name": "Marcus Reed", "title": "Founding Partner", "fund": "Copperline Ventures", "city": "Denver", "stages": ["Pre-Seed", "Seed"], "sectors": ["Climate", "Data"], "lead_investments": 14},
+    {"name": "Hannah Cole", "title": "Principal", "fund": "Lattice Capital", "city": "Seattle", "stages": ["Seed"], "sectors": ["Cloud", "SaaS"], "lead_investments": 12},
+    {"name": "Daniel Okafor", "title": "Partner", "fund": "Riverstone Growth", "city": "Atlanta", "stages": ["Series A", "Series B"], "sectors": ["FinTech", "SaaS"], "lead_investments": 38},
+    {"name": "Noa Ben-David", "title": "Partner", "fund": "Bridge Seed Fund", "city": "New York", "stages": ["Pre-Seed", "Seed"], "sectors": ["AI", "Robotics"], "lead_investments": 24},
+    {"name": "Kevin Shah", "title": "Venture Partner", "fund": "Pioneer Square Ventures", "city": "Seattle", "stages": ["Seed"], "sectors": ["Data", "AI"], "lead_investments": 7}
+  ],
+  "perks": [
+    {"name": "CloudCo", "category": "Cloud", "offer": "Up to $10,000 in cloud credits", "tag": "Credits", "steps": ["Apply through the portal", "Verify startup eligibility", "Receive credits"]},
+    {"name": "TrackFlow", "category": "Product management", "offer": "12 months at 50% off", "tag": "Discount", "steps": ["Create an account", "Enter the program code", "Activate the discount"]},
+    {"name": "PayrollHub", "category": "HR and payroll", "offer": "$3,000 in credits", "tag": "Credits", "steps": ["Contact the partner", "Mention the program", "Receive credits"]},
+    {"name": "DeskNote", "category": "Productivity", "offer": "6 months of the business plan free", "tag": "Perk", "steps": ["Sign up with a company email", "Apply as a startup", "Activate the plan"]},
+    {"name": "LeadLens", "category": "Sales intelligence", "offer": "5,000 contact credits", "tag": "Perk", "steps": ["Register through the link", "Email the program team", "Include startup name and cohort"]},
+    {"name": "ShipFast", "category": "Hosting", "offer": "Free Pro plan for one year", "tag": "Perk", "steps": ["Apply as a startup", "Verify the company", "Upgrade to Pro"]}
+  ],
+  "events": [
+    {"date": "2026-11-04", "time": "18:00", "title": "No-code: from idea to product", "host": "Program team", "location": "Tel Aviv"},
+    {"date": "2026-11-12", "time": "17:00", "title": "Raising your first U.S. round", "host": "Investor panel", "location": "Online"},
+    {"date": "2026-11-19", "time": "09:00", "title": "Building a U.S. sales motion", "host": "Mentor workshop", "location": "Tel Aviv"},
+    {"date": "2026-12-02", "time": "18:30", "title": "Founder demo night", "host": "Cohort founders", "location": "Herzliya"}
+  ]
+}
