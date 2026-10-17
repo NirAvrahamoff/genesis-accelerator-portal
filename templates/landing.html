@@ -12,6 +12,16 @@
   </div>
 </section>
 
+<section class="container photo-section">
+  <figure class="photo-band">
+    <img src="{{ url_for('static', filename='img/demo-day.jpg') }}"
+         srcset="{{ url_for('static', filename='img/demo-day-900.jpg') }} 900w, {{ url_for('static', filename='img/demo-day.jpg') }} 1800w"
+         sizes="(max-width: 1100px) 100vw, 1060px"
+         alt="Founders and the program team together at demo day" width="1800" height="1200">
+    <figcaption>Demo day with founders from the cohort</figcaption>
+  </figure>
+</section>
+
 <section class="container section">
   <div class="split">
     <div>
