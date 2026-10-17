@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>Application Submitted | Genesis</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+background:#f6f8fb;
+color:#1e293b;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+height:100vh;
+}
+
+.logo{
+
+height:36px;
+display:block;
+margin:0 auto 18px auto;
+
+}
+
+/* card */
+
+.card{
+
+background:white;
+
+padding:40px 40px;
+
+border-radius:18px;
+
+max-width:520px;
+text-align:center;
+
+border:1px solid #e2e8f0;
+
+box-shadow:0 18px 40px rgba(0,0,0,0.08);
+
+}
+
+/* icon */
+
+.icon{
+
+font-size:70px;
+
+color:#22c55e;
+
+margin-bottom:15px;
+
+animation:pop .4s ease;
+
+}
+
+/* animation */
+
+@keyframes pop{
+
+0%{transform:scale(0);}
+70%{transform:scale(1.2);}
+100%{transform:scale(1);}
+
+}
+
+h1{
+
+font-size:32px;
+
+margin-bottom:16px;
+
+color:#111827;
+
+}
+
+p{
+
+font-size:16px;
+
+color:#475569;
+
+line-height:1.6;
+
+margin-bottom:18px;
+
+}
+
+/* button */
+
+.cta-btn{
+
+margin-top:15px;
+
+padding:14px 34px;
+
+font-size:16px;
+
+font-weight:600;
+
+color:#fff;
+
+background:linear-gradient(90deg,#6366f1,#8b5cf6);
+
+border:none;
+
+border-radius:30px;
+
+cursor:pointer;
+
+transition:all .2s;
+
+}
+
+/* hover effect */
+
+.cta-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 10px 20px rgba(99,102,241,0.35);
+
+}
+
+.cta-btn:active{
+
+transform:translateY(0);
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="card">
+
+<img src="/static/png/genesis_logo.png" class="logo">
+
+<div class="icon">✓</div>
+
+<h1>Application Submitted</h1>
+
+<p>
+Thank you for applying.
+Your application has been successfully received and is currently under review.
+</p>
+
+<p>
+Our team will contact you if your startup is selected for the next stage.
+</p>
+
+<button
+class="cta-btn"
+onclick="window.location.href='{{ url_for('landing') }}'">
+
+Back to Home
+
+</button>
+
+</div>
+
+</body>
+</html>

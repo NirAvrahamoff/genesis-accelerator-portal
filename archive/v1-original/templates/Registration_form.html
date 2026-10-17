@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Genesis Accelerator - Apply</title>
+
+<style>
+
+.logo-header{
+position:absolute;
+top:20px;
+left:20px;
+}
+
+.logo-header img{
+height:50px;
+}
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+margin:0;
+background:#f6f8fb;
+color:#1e293b;
+}
+
+.wrap{
+max-width:980px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+border:1px solid #e2e8f0;
+border-radius:16px;
+padding:28px;
+box-shadow:0 10px 25px rgba(0,0,0,0.06);
+}
+
+a{
+color:#6366f1;
+text-decoration:none;
+font-weight:600;
+}
+
+a:hover{
+text-decoration:underline;
+}
+
+h1{
+margin:10px 0 20px;
+color:#111827;
+}
+
+h3{
+margin-top:25px;
+color:#111827;
+}
+
+label{
+display:block;
+margin-top:14px;
+font-weight:600;
+}
+
+.req{
+color:#ef4444;
+}
+
+input, textarea{
+
+width:100%;
+margin-top:8px;
+padding:11px 13px;
+
+background:#f9fafb;
+border:1px solid #e2e8f0;
+border-radius:10px;
+
+font-size:15px;
+box-sizing:border-box;
+
+transition:all .15s;
+
+}
+
+/* תיקון גודל dropdown */
+
+select{
+
+width:100%;
+margin-top:8px;
+
+height:36px;
+padding:6px 10px;
+
+background:#f9fafb;
+border:1px solid #e2e8f0;
+border-radius:10px;
+
+font-size:14px;
+
+box-sizing:border-box;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+outline:none;
+border-color:#6366f1;
+box-shadow:0 0 0 2px rgba(99,102,241,0.15);
+
+}
+
+textarea{
+min-height:110px;
+resize:vertical;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+}
+
+@media(max-width:800px){
+.row{grid-template-columns:1fr;}
+}
+
+
+/* ----------- checkbox grid ----------- */
+
+.checkbox-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:10px;
+margin-top:10px;
+}
+
+@media(min-width:700px){
+.checkbox-grid{
+grid-template-columns:1fr 1fr;
+}
+}
+
+.check-row{
+
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+
+gap:14px;
+
+background:#f9fafb;
+border:1px solid #e2e8f0;
+
+border-radius:10px;
+padding:10px 12px;
+
+font-weight:normal;
+
+}
+
+.check-row span{
+line-height:1.4;
+}
+
+.check-row input[type="checkbox"]{
+margin-top:2px;
+width:18px;
+height:18px;
+flex-shrink:0;
+}
+
+
+/* ----------- submit button ----------- */
+
+.btn{
+
+display:inline-block;
+margin-top:24px;
+
+padding:14px 28px;
+
+border-radius:30px;
+font-weight:600;
+font-size:15px;
+
+border:none;
+cursor:pointer;
+
+background:linear-gradient(90deg,#6366f1,#8b5cf6);
+color:white;
+
+transition:all .2s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-2px);
+box-shadow:0 8px 18px rgba(99,102,241,0.35);
+
+}
+
+.btn:active{
+transform:translateY(0);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="logo-header">
+
+<img src="/static/png/genesis_logo.png" class="logo"></div>
+
+<div class="wrap">
+
+<a href="{{ url_for('landing') }}">← Back</a>
+
+<div class="card">
+
+<h1>Genesis Accelerator Application Form</h1>
+
+<form action="{{ url_for('submit') }}" method="post">
+
+
+<div class="row">
+
+<div>
+<label>Full Name <span class="req">*</span></label>
+<input name="full_name" required>
+</div>
+
+<div>
+<label>Email <span class="req">*</span></label>
+<input name="email" type="email" required>
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div>
+<label>LinkedIn <span class="req">*</span></label>
+<input name="linkedin" required>
+</div>
+
+<div>
+<label>Phone Number <span class="req">*</span></label>
+<input name="phone" required>
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div>
+<label>What's your role in the company? <span class="req">*</span></label>
+<input name="role_in_company" required>
+</div>
+
+<div>
+<label>Company Name <span class="req">*</span></label>
+<input name="company_name" required>
+</div>
+
+</div>
+
+
+<h3>What do you hope to gain from the program? <span class="req">*</span></h3>
+
+<div class="checkbox-grid">
+
+<label class="check-row">
+<span>Mentoring</span>
+<input type="checkbox" name="gain[]" value="Mentoring">
+</label>
+
+<label class="check-row">
+<span>Access to Customers or Design Partners</span>
+<input type="checkbox" name="gain[]" value="Customers">
+</label>
+
+<label class="check-row">
+<span>Access to Investors / Fundraising support</span>
+<input type="checkbox" name="gain[]" value="Investors">
+</label>
+
+<label class="check-row">
+<span>Educational content on company-building</span>
+<input type="checkbox" name="gain[]" value="Education">
+</label>
+
+<label class="check-row">
+<span>Networking with fellow founders</span>
+<input type="checkbox" name="gain[]" value="Networking">
+</label>
+
+<label class="check-row">
+<span>Technical Support</span>
+<input type="checkbox" name="gain[]" value="Tech">
+</label>
+
+<label class="check-row">
+<span>Other</span>
+<input type="checkbox" name="gain[]" value="Other">
+</label>
+
+</div>
+
+
+
+<div class="row">
+
+<div>
+<label>Startup sector</label>
+
+<select name="primary_sector">
+
+<option value="" disabled selected hidden>Select sector</option>
+<option>AI</option>
+<option>FinTech</option>
+<option>Cyber</option>
+<option>HealthTech</option>
+<option>SaaS</option>
+<option>Cloud</option>
+<option>Robotics</option>
+<option>Data</option>
+
+</select>
+
+</div>
+
+
+<div>
+<label>Startup stage</label>
+
+<select name="startup_stage" required>
+
+<option value="" disabled selected hidden>Select stage</option>
+<option>Ideation</option>
+<option>Pre-Seed</option>
+<option>Seed</option>
+<option>Early revenue</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+
+<div class="row">
+
+<div>
+
+<label>Co-founders count</label>
+
+<select name="cofounders_count" required>
+
+<option value="" disabled selected hidden>Select</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">More than 2</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>How long have you been working on your Startup?</label>
+
+<select name="time_working_on_startup" required>
+
+<option value="" disabled selected hidden>Select</option>
+<option value="lt_3">Less than 3 months</option>
+<option value="3_6">3–6 months</option>
+<option value="6_24">6 months – 2 years</option>
+<option value="gt_24">More than 2 years</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+
+<label>Co-founders details</label>
+<textarea name="cofounders_details"></textarea>
+
+
+
+<label>When was the company founded?</label>
+
+<input
+type="date"
+name="company_founded_date"
+min="2000-01-01"
+max="{{ today }}"
+>
+
+
+
+<label>Startup description</label>
+<textarea name="startup_description"></textarea>
+
+
+<label>What makes your team unique?</label>
+<textarea name="team_unique"></textarea>
+
+
+<label>Who are your current customers?</label>
+<textarea name="current_customers"></textarea>
+
+
+<label>What are your goals for the next 6 months?</label>
+<textarea name="goals_next_6_months"></textarea>
+
+
+
+<div class="row">
+
+<div>
+
+<label>Have you raised any funding so far?</label>
+
+<select name="raised_funding">
+
+<option value="" disabled selected hidden>Select</option>
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Revenue over the past year</label>
+
+<select name="revenue_past_year">
+
+<option value="" disabled selected hidden>Select</option>
+<option value="none">No revenue yet</option>
+<option value="lt_50k">Less than $50k</option>
+<option value="50_250k">$50k–$250k</option>
+<option value="250k_1m">$250k–$1M</option>
+<option value="gt_1m">$1M+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+
+<label>From whom?</label>
+<input name="funding_from_whom">
+
+
+
+<label>Website</label>
+<input name="website_link">
+
+
+<label>Have you participated in an accelerator before?</label>
+<input name="participated_accelerator">
+
+
+<label>How did you hear about us?</label>
+<input name="heard_about_us">
+
+
+<label>Additional information</label>
+<textarea name="additional_info"></textarea>
+
+
+
+<label style="margin-top:22px;">Consent</label>
+
+<label class="check-row">
+
+<span>
+I agree that the personal information I provide will be collected and stored by Genesis Accelerator
+<span class="req">*</span>
+</span>
+
+<input type="checkbox" name="consent_accepted" required>
+
+</label>
+
+
+
+<button class="btn" type="submit">
+Submit Application
+</button>
+
+
+</form>
+</div>
+</div>
+
+</body>
+</html>

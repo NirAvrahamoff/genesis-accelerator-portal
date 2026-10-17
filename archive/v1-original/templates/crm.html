@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genesis Community Portal</title>
+    <link rel="stylesheet" href="../crm.css">
+</head>
+<body>
+
+<header class="header">
+    <img src="../static/png/genesis_logo.png" alt="Genesis Logo" class="logo">
+    <nav>
+        <a href="#startups">Startups</a>
+        <a href="#mentors">Mentors</a>
+        <a href="#investors">Investors</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#events">Events</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="../static/png/startupsvibe.JPEG" alt="Startup Vibe">
+    <div class="hero-text">
+        <h1>Genesis Community Portal</h1>
+        <p>One place for startups, mentors, investors and perks</p>
+    </div>
+</section>
+
+<main class="content">
+
+<!-- STARTUPS -->
+<section id="startups" class="section">
+  <h2>Startup Community</h2>
+  <div class="grid">
+
+    <div class="card">
+      <h3>CyberShield</h3>
+      <p>Sector: Cybersecurity</p>
+      <p>Stage: Seed</p>
+      <button class="btn-outline"
+        onclick="openContactForm('CyberShield', 'startup')">
+        Contact
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>FinEdge</h3>
+      <p>Sector: FinTech</p>
+      <p>Stage: Series A</p>
+      <button class="btn-outline"
+        onclick="openContactForm('FinEdge', 'startup')">
+        Contact
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>HealthAI</h3>
+      <p>Sector: HealthTech</p>
+      <p>Stage: Seed</p>
+      <button class="btn-outline"
+        onclick="openContactForm('HealthAI', 'startup')">
+        Contact
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>RetailFlow</h3>
+      <p>Sector: E-Commerce</p>
+      <p>Stage: Pre-Seed</p>
+      <button class="btn-outline"
+        onclick="openContactForm('RetailFlow', 'startup')">
+        Contact
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>DataPulse</h3>
+      <p>Sector: Data</p>
+      <p>Stage: Series A</p>
+      <button class="btn-outline"
+        onclick="openContactForm('DataPulse', 'startup')">
+        Contact
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>CloudX</h3>
+      <p>Sector: Cloud</p>
+      <p>Stage: Seed</p>
+      <button class="btn-outline"
+        onclick="openContactForm('CloudX', 'startup')">
+        Contact
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>GreenTech Labs</h3>
+      <p>Sector: Climate</p>
+      <p>Stage: Seed</p>
+      <button class="btn-outline"
+        onclick="openContactForm('GreenTech Labs', 'startup')">
+        Contact
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>LogiSmart</h3>
+      <p>Sector: Logistics</p>
+      <p>Stage: Pre-Seed</p>
+      <button class="btn-outline"
+        onclick="openContactForm('LogiSmart', 'startup')">
+        Contact
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>VisionAI</h3>
+      <p>Sector: AI</p>
+      <p>Stage: Series B</p>
+      <button class="btn-outline"
+        onclick="openContactForm('VisionAI', 'startup')">
+        Contact
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>SecureID</h3>
+      <p>Sector: Identity</p>
+      <p>Stage: Seed</p>
+      <button class="btn-outline"
+        onclick="openContactForm('SecureID', 'startup')">
+        Contact
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- MENTORS -->
+<section id="mentors" class="section">
+    <div class="section-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 class="section-title">Mentors</h2>
+    </div>
+    <div id="mentorList" class="grid"></div>
+</section>
+<div id="contactModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <h2 id="contactTitle">Request Introduction</h2>
+        <p id="contactSub">Fill in the details to connect.</p>
+        <div id="startupOnlyFields" class="hidden">
+            <input type="text" placeholder="Pitch Deck Link" style="width:100%; margin:10px 0; padding:8px;">
+        </div>
+        <textarea placeholder="Your message..." style="width:100%; height:100px; margin-bottom:15px; padding:8px;"></textarea>
+        <div class="actions" style="display: flex; gap: 10px;">
+            <button class="btn-primary" onclick="alert('Sent!')">Send Request</button>
+            <button class="btn-outline" onclick="closeContactForm()">Close</button>
+        </div>
+    </div>
+</div>
+<!-- INVESTORS -->
+<section id="investors" class="section">
+  <h2>Investors</h2>
+
+  <!-- Controls -->
+  <div class="investors-controls">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search investor..."
+      oninput="applyFilters()"
+    />
+
+    <select id="sectorFilter" onchange="applyFilters()">
+      <option value="">All sectors</option>
+    </select>
+  </div>
+
+  <!-- Investors list (ROWS, not grid) -->
+  <div id="investorList"></div>
+
+  <!-- See more / less -->
+  <div style="text-align:center; margin-top:20px;">
+    <button
+      id="seeMoreBtn"
+      class="btn-outline"
+      onclick="toggleSeeMore()"
+      style="display:none;"
+    >
+      See more
+    </button>
+  </div>
+</section>
+<!-- Investor Details Modal -->
+<div id="investorModal" class="modal hidden">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeInvestorModal()">✕</button>
+
+    <h2 id="modalInvestorName"></h2>
+    <p id="modalInvestorTitle"></p>
+
+    <div id="modalInvestorSectors"></div>
+    <div id="modalInvestorDetails"></div>
+
+    <div class="modal-actions">
+      <button class="btn-primary">Request Introduction</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- BENEFITS -->
+<section id="benefits" class="section">
+  <h2 class="section-title"> Benefits & Perks</h2>
+
+  <div id="benefitsGrid" class="grid"></div>
+</section>
+
+<!-- Modal -->
+<div id="benefitModal" class="modal" onclick="closeBenefitModal(event)">
+  <div class="modal-content perk-modal">
+    <img id="modalLogo" class="perk-modal-logo">
+    <h2 id="modalName"></h2>
+    <p id="modalCategory"></p>
+
+    <a id="modalLink" href="#" target="_blank">🔗 Visit partner</a>
+
+    <h4 id="modalOffer"></h4>
+    <ol id="modalSteps"></ol>
+  </div>
+</div>
+
+
+<!-- EVENTS -->
+<section id="events" class="section">
+  <h2>Events</h2>
+
+  <div class="events-grid">
+
+    <div class="event-card">
+      <div class="event-date">
+        <span class="day">24</span>
+        <span class="month">Feb</span>
+        <span class="year">2026</span>
+      </div>
+
+      <div class="event-content">
+        <h3>No-Code: From Idea to Product</h3>
+        <p class="event-time">🕕 6:00 PM · Wednesday</p>
+        <p class="event-host">👤 By Roi Shmuel</p>
+        <p class="event-location">📍 Abba Hillel Silver Rd 21</p>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-date">
+        <span class="day">28</span>
+        <span class="month">Feb</span>
+        <span class="year">2026</span>
+      </div>
+
+      <div class="event-content">
+        <h3>QuantumTech: Innovation Meets Investment</h3>
+        <p class="event-time">🕔 5:00 PM · Monday</p>
+        <p class="event-host">👤 By Gornitzky GNY</p>
+        <p class="event-location">📍 Gornitzky GNY Law Firm, Israel</p>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-date">
+        <span class="day">5</span>
+        <span class="month">Mar</span>
+        <span class="year">2026</span>
+      </div>
+
+      <div class="event-content">
+        <h3>How to Raise Your First Round</h3>
+        <p class="event-time">🕘 9:00 AM · Monday</p>
+        <p class="event-host">👥 By Guy Katsovich, Amit Shechter & Idan Tamir</p>
+        <p class="event-location">📍 GUTS – Harel Innovation Hub</p>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-date">
+        <span class="day">7</span>
+        <span class="month">Mar</span>
+        <span class="year">2026</span>
+      </div>
+
+      <div class="event-content">
+        <h3>How I Built This Startup – Builders Edition</h3>
+        <p class="event-time">🕘 9:00 AM · Wednesday</p>
+        <p class="event-host">👤 By Dekel Yakobovich</p>
+        <p class="event-location">📍 Google for Startups Campus</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- TEAM -->
+<section class="team">
+    <h2>Genesis Team</h2>
+    <img src="../static/png/team_genesis.png" alt="Genesis Team">
+</section>
+<!-- COMMUNITY CTA -->
+<section class="community-cta">
+  <h2>Stay Connected with Genesis 🚀</h2>
+  <p>Stay connected with the Genesis community and never miss what’s next</p>
+
+  <div class="cta-actions">
+
+    <!-- Newsletter -->
+    <div class="cta-card">
+      <h3>📩 Newsletter</h3>
+      <p>Monthly updates, investor news & events</p>
+      <input
+        type="email"
+        placeholder="Enter your email"
+        id="newsletterEmail"
+      />
+      <button class="btn-primary" onclick="subscribeNewsletter()">
+        Subscribe
+      </button>
+    </div>
+
+    <!-- WhatsApp -->
+    <div class="cta-card">
+      <h3>💬 Genesis WhatsApp Community</h3>
+      <p>Join our founders, mentors & investors group</p>
+      <a
+        href="https://chat.whatsapp.com/YOUR_GROUP_LINK"
+        target="_blank"
+        class="btn-outline"
+      >
+        Join WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <p>© Genesis Accelerator</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="../crm.js"></script>
+</body>
+</html>
+
+
+

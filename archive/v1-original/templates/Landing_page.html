@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>Genesis Accelerator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+background:#f6f8fb;
+color:#1e293b;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px 80px;
+}
+
+.header{
+text-align:center;
+margin-bottom:50px;
+}
+
+.logo{
+height:50px;
+margin-bottom:15px;
+}
+
+.hero{
+text-align:center;
+margin-bottom:70px;
+}
+
+.hero h1{
+font-size:46px;
+margin-bottom:16px;
+font-weight:700;
+color:#111827;
+}
+
+.hero p{
+font-size:18px;
+color:#475569;
+max-width:760px;
+margin:auto;
+line-height:1.6;
+}
+
+.highlight{
+color:#6366f1;
+font-weight:600;
+}
+
+.image-section{
+margin:70px 0;
+text-align:center;
+}
+
+.image-section img{
+width:100%;
+max-width:900px;
+border-radius:16px;
+box-shadow:0 10px 30px rgba(0,0,0,0.12);
+}
+
+section{
+margin-bottom:60px;
+}
+
+h2{
+font-size:30px;
+margin-bottom:16px;
+color:#111827;
+}
+
+p{
+font-size:16px;
+line-height:1.6;
+color:#475569;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.card{
+background:white;
+padding:22px;
+border-radius:12px;
+border:1px solid #e2e8f0;
+font-size:15px;
+box-shadow:0 6px 14px rgba(0,0,0,0.06);
+transition:all .2s;
+}
+
+.card:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 22px rgba(0,0,0,0.1);
+}
+
+ul{
+padding-left:0;
+list-style:none;
+}
+
+ul li{
+margin-bottom:12px;
+font-size:16px;
+}
+
+ul li::before{
+content:"✓ ";
+color:#6366f1;
+font-weight:bold;
+}
+
+.footer-cta{
+text-align:center;
+margin-top:80px;
+padding-top:40px;
+border-top:1px solid #e2e8f0;
+}
+
+.footer-cta h2{
+margin-bottom:25px;
+}
+
+.cta-btn{
+padding:16px 36px;
+font-size:16px;
+font-weight:600;
+color:white;
+background:linear-gradient(90deg,#6366f1,#8b5cf6);
+border:none;
+border-radius:30px;
+cursor:pointer;
+transition:all .2s;
+}
+
+.cta-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 20px rgba(99,102,241,0.35);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+<img src="{{ url_for('static', filename='png/genesis_logo.png') }}" class="logo">
+</div>
+
+<div class="hero">
+
+<h1>Genesis Accelerator</h1>
+
+<p>
+Scale & Enter the U.S. Market The Right Way<br><br>
+
+Genesis Accelerator is a <span class="highlight">3-month, no-equity program</span>
+for post-MVP startups that want to sharpen their U.S. go-to-market,
+build repeatable growth systems, and achieve real traction.
+</p>
+
+</div>
+
+<div class="image-section">
+<img src="{{ url_for('static', filename='png/startupsvibe.JPEG') }}">
+</div>
+
+<section>
+
+<h2>Who It's For</h2>
+
+<p>
+Built for <span class="highlight">Pre-Seed and Seed stage startups</span>
+with a working product, early revenue, pilots, or strong validation.
+</p>
+
+<p>
+We focus on ambitious teams serious about scaling to the U.S. market.
+</p>
+
+</section>
+
+<section>
+
+<h2>What You'll Learn</h2>
+
+<div class="cards">
+
+<div class="card">
+Building repeatable GTM and sales systems
+</div>
+
+<div class="card">
+U.S. ICP definition and outbound strategy
+</div>
+
+<div class="card">
+Hiring, compliance, and cross-border operations
+</div>
+
+<div class="card">
+90-day U.S. launch roadmap and mock board sessions
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>What You'll Get</h2>
+
+<ul>
+
+<li>Direct access to <span class="highlight">100+ VCs and mentors</span></li>
+
+<li>Hands-on mentorship from experienced founders</li>
+
+<li>Startup credits from leading tech partners</li>
+
+<li>Long-term access to the Genesis founder community</li>
+
+</ul>
+
+</section>
+
+<section>
+
+<h2>Why Genesis</h2>
+
+<p>
+Tech accounts for more than half of Israel’s exports.
+Genesis helps exceptional founders turn strong technology
+into scalable, revenue-driven U.S. companies.
+</p>
+
+</section>
+
+<div class="footer-cta">
+
+<h2>Scale globally & enter the U.S. with confidence</h2>
+
+<button class="cta-btn"
+onclick="window.location.href='{{ url_for('apply') }}'">
+
+Apply Now
+
+</button>
+
+</div>
+
+</div>
+
+</body>
+</html>
