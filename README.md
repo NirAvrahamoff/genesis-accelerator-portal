@@ -2,9 +2,11 @@
 
 A working web portal for a startup accelerator. Founders apply through a validated form. The program team reviews and ranks applications in an admin dashboard. Founders, mentors and investors connect through a community portal.
 
-I built it on my own as a UX course project. The case was the Genesis Accelerator, where I worked as a data analyst intern, and the goal was to design the complete flow from application to review. It is a concept, not the accelerator's official site, and every person, fund and startup in it is fictional demo data.
+I built it on my own as a UX course project. The case was the Genesis Accelerator, where I worked as a data analyst intern, and the goal was to design the complete flow from application to review. It is a concept, not the accelerator's official site. The team photo is real and used with permission. Every applicant, mentor, investor and startup in the portal is fictional demo data.
 
 ![Admin dashboard](screenshots/admin.png)
+
+<p align="center"><img src="static/img/genesis-team.jpg" alt="The Genesis Accelerator team" width="640"><br><em>The Genesis Accelerator team. I was the team's analyst.</em></p>
 
 ## What it does
 
