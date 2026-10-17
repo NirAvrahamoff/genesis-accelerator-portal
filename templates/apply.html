@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Apply{% endblock %}
+
+{% macro err(name) %}{% if errors.get(name) %}<span class="error">{{ errors[name] }}</span>{% endif %}{% endmacro %}
+
+{% macro text(name, label, required=False, type="text", area=False) %}
+<div class="field {% if errors.get(name) %}has-error{% endif %}">
+  <label for="{{ name }}">{{ label }}{% if required %} <span class="req">*</span>{% endif %}</label>
+  {% if area %}
+  <textarea id="{{ name }}" name="{{ name }}" maxlength="2000">{{ values.get(name, '') }}</textarea>
+  {% else %}
+  <input id="{{ name }}" name="{{ name }}" type="{{ type }}" value="{{ values.get(name, '') }}" maxlength="2000" {% if required %}required{% endif %}>
+  {% endif %}
+  {{ err(name) }}
+</div>
+{% endmacro %}
+
+{% macro choice(name, label, options, required=False) %}
+<div class="field {% if errors.get(name) %}has-error{% endif %}">
+  <label for="{{ name }}">{{ label }}{% if required %} <span class="req">*</span>{% endif %}</label>
+  <select id="{{ name }}" name="{{ name }}" {% if required %}required{% endif %}>
+    <option value="">Select</option>
+    {% for value, text in options %}
+    <option value="{{ value }}" {% if values.get(name) == value %}selected{% endif %}>{{ text }}</option>
+    {% endfor %}
+  </select>
+  {{ err(name) }}
+</div>
+{% endmacro %}
+
+{% block content %}
+<section class="container narrow section">
+  <h1>Application form</h1>
+  <p class="muted">Fields marked <span class="req">*</span> are required.</p>
+  {% if errors %}<div class="alert">Please fix the highlighted fields below.</div>{% endif %}
+
+  <form method="post" action="{{ url_for('submit') }}" class="card form" novalidate>
+    <input type="hidden" name="csrf" value="{{ csrf_token() }}">
+
+    <h2 class="form-section">About you</h2>
+    <div class="row">{{ text("full_name", "Full name", True) }}{{ text("email", "Email", True, "email") }}</div>
+    <div class="row">{{ text("linkedin", "LinkedIn profile", True, "url") }}{{ text("phone", "Phone number", True, "tel") }}</div>
+    <div class="row">{{ text("role_in_company", "Your role in the company", True) }}{{ text("company_name", "Company name", True) }}</div>
+
+    <h2 class="form-section">What do you hope to gain? <span class="req">*</span></h2>
+    <div class="checkbox-grid {% if errors.get('gain') %}has-error{% endif %}">
+      {% for value, text_ in forms.GAINS.items() %}
+      <label class="check"><input type="checkbox" name="gain" value="{{ value }}" {% if value in values.get('gain', []) %}checked{% endif %}> {{ text_ }}</label>
+      {% endfor %}
+    </div>
+    {{ err("gain") }}
+
+    <h2 class="form-section">The startup</h2>
+    <div class="row">
+      {{ choice("primary_sector", "Sector", forms.SECTORS|zip_self, True) }}
+      {{ choice("startup_stage", "Stage", forms.STAGES|zip_self, True) }}
+    </div>
+    <div class="row">
+      {{ choice("cofounders_count", "Number of co-founders", forms.COFOUNDERS.items(), True) }}
+      {{ choice("time_working_on_startup", "Time working on the startup", forms.TIME_WORKING.items(), True) }}
+    </div>
+    {{ text("cofounders_details", "Co-founder details", area=True) }}
+    <div class="field">
+      <label for="company_founded_date">Founding date</label>
+      <input id="company_founded_date" name="company_founded_date" type="date" min="2000-01-01" max="{{ today }}" value="{{ values.get('company_founded_date', '') }}">
+    </div>
+    {{ text("startup_description", "Startup description", area=True) }}
+    {{ text("team_unique", "What makes your team unique?", area=True) }}
+    {{ text("current_customers", "Who are your current customers?", area=True) }}
+    {{ text("goals_next_6_months", "Goals for the next 6 months", area=True) }}
+
+    <h2 class="form-section">Traction and funding</h2>
+    <div class="row">
+      {{ choice("raised_funding", "Have you raised funding?", forms.YES_NO|zip_self) }}
+      {{ choice("revenue_past_year", "Revenue over the past year", forms.REVENUE.items()) }}
+    </div>
+    {{ text("funding_from_whom", "From whom?") }}
+    {{ text("website_link", "Website", type="url") }}
+    {{ text("participated_accelerator", "Have you taken part in an accelerator before?") }}
+    {{ text("heard_about_us", "How did you hear about us?") }}
+    {{ text("additional_info", "Anything else?", area=True) }}
+
+    <label class="check consent {% if errors.get('consent') %}has-error{% endif %}">
+      <input type="checkbox" name="consent" {% if values.get('consent') %}checked{% endif %}>
+      I agree that the information I provide will be stored to review my application. <span class="req">*</span>
+    </label>
+    {{ err("consent") }}
+
+    <button class="btn" type="submit">Submit application</button>
+  </form>
+</section>
+{% endblock %}

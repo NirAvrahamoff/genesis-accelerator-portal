@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="container narrow">
+    <p class="eyebrow">3-month program · no equity</p>
+    <h1>Scale and enter the U.S. market the right way</h1>
+    <p class="lead">A program for post-MVP startups that want to sharpen their U.S. go-to-market, build repeatable growth systems and reach real traction.</p>
+    <div class="hero-actions">
+      <a class="btn" href="{{ url_for('apply') }}">Apply now</a>
+      <a class="btn btn-ghost" href="{{ url_for('community_portal') }}">Explore the community</a>
+    </div>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="split">
+    <div>
+      <h2>Who it's for</h2>
+      <p>Pre-Seed and Seed startups with a working product, early revenue, pilots or strong validation, and a team that is serious about scaling in the U.S.</p>
+    </div>
+    <div class="fact-row">
+      <div class="fact"><strong>3</strong><span>months</span></div>
+      <div class="fact"><strong>0%</strong><span>equity</span></div>
+      <div class="fact"><strong>100+</strong><span>investors and mentors</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="container section">
+  <h2>What you'll learn</h2>
+  <div class="grid grid-4">
+    <div class="card"><h3>Go-to-market</h3><p>Repeatable sales and GTM systems.</p></div>
+    <div class="card"><h3>U.S. ICP</h3><p>Defining your ideal customer and outbound strategy.</p></div>
+    <div class="card"><h3>Operations</h3><p>Hiring, compliance and cross-border operations.</p></div>
+    <div class="card"><h3>Launch plan</h3><p>A 90-day U.S. roadmap and mock board sessions.</p></div>
+  </div>
+</section>
+
+<section class="container section">
+  <h2>What you'll get</h2>
+  <ul class="checklist">
+    <li>Direct access to investors and mentors</li>
+    <li>Hands-on mentorship from experienced founders</li>
+    <li>Startup credits from technology partners</li>
+    <li>Long-term access to the founder community</li>
+  </ul>
+</section>
+
+<section class="cta-band">
+  <div class="container narrow center">
+    <h2>Ready to scale in the U.S.?</h2>
+    <p>The application takes about 10 minutes.</p>
+    <a class="btn" href="{{ url_for('apply') }}">Start your application</a>
+  </div>
+</section>
+{% endblock %}

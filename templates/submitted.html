@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Application received{% endblock %}
+{% block content %}
+<section class="container narrow section center">
+  <div class="card confirm">
+    <div class="confirm-mark" aria-hidden="true">✓</div>
+    <h1>Application received</h1>
+    <p>Thanks for applying. The program team reviews applications on a rolling basis and will contact you by email.</p>
+    <a class="btn btn-ghost" href="{{ url_for('landing') }}">Back to the program page</a>
+  </div>
+</section>
+{% endblock %}

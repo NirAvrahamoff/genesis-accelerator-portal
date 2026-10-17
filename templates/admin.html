@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Applications{% endblock %}
+{% block body_class %}admin{% endblock %}
+{% block content %}
+<section class="container wide section">
+  <div class="section-head">
+    <div>
+      <h1>Applications</h1>
+      <p class="muted">Review, filter and rank startup applications.</p>
+    </div>
+    <div class="controls">
+      <a class="btn btn-ghost btn-small" href="{{ url_for('export_csv') }}">Export CSV</a>
+      <form method="post" action="{{ url_for('logout') }}"><input type="hidden" name="csrf" value="{{ csrf_token() }}"><button class="btn btn-ghost btn-small">Sign out</button></form>
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><span>Applications</span><strong>{{ summary.total }}</strong></div>
+    <div class="kpi"><span>High fit (7+)</span><strong>{{ summary.high_fit }}</strong></div>
+    <div class="kpi"><span>Raised funding</span><strong>{{ summary.funded }}</strong></div>
+    <div class="kpi"><span>Intro requests</span><strong>{{ summary.intros }}</strong></div>
+  </div>
+
+  <div class="grid grid-3 charts">
+    <div class="card"><h3>By sector</h3><div class="chart-box"><canvas id="sectorChart"></canvas></div></div>
+    <div class="card"><h3>By stage</h3><div class="chart-box"><canvas id="stageChart"></canvas></div></div>
+    <div class="card"><h3>Fit Score distribution</h3><div class="chart-box"><canvas id="scoreChart"></canvas></div></div>
+  </div>
+
+  <div class="card filters">
+    <input id="q" type="search" placeholder="Search founder or company" aria-label="Search">
+    <select id="fSector" aria-label="Sector"><option value="">All sectors</option>{% for s in forms.SECTORS %}<option>{{ s }}</option>{% endfor %}</select>
+    <select id="fStage" aria-label="Stage"><option value="">All stages</option>{% for s in forms.STAGES %}<option>{{ s }}</option>{% endfor %}</select>
+    <select id="fFunding" aria-label="Funding"><option value="">Any funding</option><option>Yes</option><option>No</option></select>
+    <select id="fScore" aria-label="Minimum Fit Score"><option value="0">Any Fit Score</option><option value="4">4+</option><option value="7">7+</option></select>
+    <button class="btn btn-ghost btn-small" id="reset" type="button">Reset</button>
+    <span class="muted" id="countLabel"></span>
+  </div>
+
+  <div class="card table-wrap">
+    <table id="apps">
+      <thead>
+        <tr>
+          <th data-key="submitted_at">Submitted</th>
+          <th data-key="full_name">Founder</th>
+          <th data-key="company_name">Company</th>
+          <th data-key="primary_sector">Sector</th>
+          <th data-key="startup_stage">Stage</th>
+          <th data-key="raised_funding">Funding</th>
+          <th data-key="revenue_label">Revenue</th>
+          <th data-key="fit_score" class="num">Fit</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="muted small">Fit Score (0-{{ max_score }}) adds points for stage, team size, time working on the startup, existing customers and funding. See <code>scoring.py</code> for the weights.</p>
+
+  <h2>Introduction requests</h2>
+  <div class="card table-wrap">
+    {% if intros %}
+    <table>
+      <thead><tr><th>Submitted</th><th>Type</th><th>To</th><th>From</th><th>Message</th></tr></thead>
+      <tbody>
+        {% for r in intros %}
+        <tr><td>{{ r.submitted_at[:10] }}</td><td>{{ r.target_type }}</td><td>{{ r.target_name }}</td><td>{{ r.requester_email }}</td><td>{{ r.message }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}<p class="muted pad">No introduction requests yet.</p>{% endif %}
+  </div>
+</section>
+
+<dialog id="details" class="dialog wide-dialog">
+  <h2 id="dTitle"></h2>
+  <dl id="dBody" class="detail-grid"></dl>
+  <div class="dialog-actions"><button class="btn" type="button" id="dClose">Close</button></div>
+</dialog>
+
+<script id="appData" type="application/json">{{ rows|tojson }}</script>
+<script id="chartData" type="application/json">{{ charts|tojson }}</script>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='vendor/chart-4.4.1.umd.js') }}"></script>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Admin sign-in{% endblock %}
+{% block content %}
+<section class="container narrow section">
+  <form method="post" class="card form login">
+    <h1>Admin sign-in</h1>
+    <input type="hidden" name="csrf" value="{{ csrf_token() }}">
+    {% with messages = get_flashed_messages() %}{% for m in messages %}<div class="alert">{{ m }}</div>{% endfor %}{% endwith %}
+    <div class="field">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required autofocus>
+    </div>
+    {% if config.SHOW_DEMO_PASSWORD %}<p class="muted">Demo password: <code>demo</code>. In demo mode, contact details of real submissions are hidden.</p>{% endif %}
+    <button class="btn" type="submit">Sign in</button>
+  </form>
+</section>
+{% endblock %}

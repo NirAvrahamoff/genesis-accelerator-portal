@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block title %}Community{% endblock %}
+{% block content %}
+<section class="hero hero-small">
+  <div class="container narrow">
+    <h1>Community portal</h1>
+    <p class="lead">One place for the cohort's startups, mentors, investors, perks and events.</p>
+    <nav class="pill-nav">
+      <a href="#startups">Startups</a><a href="#mentors">Mentors</a><a href="#investors">Investors</a>
+      <a href="#perks">Perks</a><a href="#events">Events</a>
+    </nav>
+  </div>
+</section>
+
+<section id="startups" class="container section">
+  <h2>Startups in the cohort</h2>
+  <div class="grid grid-4">
+    {% for s in data.startups %}
+    <div class="card">
+      <h3>{{ s.name }}</h3>
+      <p class="muted">{{ s.sector }} · {{ s.stage }}</p>
+      <button class="btn btn-ghost btn-small" data-intro="startup" data-name="{{ s.name }}">Contact</button>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="mentors" class="container section">
+  <div class="section-head">
+    <h2>Mentors</h2>
+    <input class="search" id="mentorSearch" type="search" placeholder="Search by name or sector" aria-label="Search mentors">
+  </div>
+  <div class="grid grid-4" id="mentorList">
+    {% for m in data.mentors %}
+    <div class="card person" data-search="{{ (m.name ~ ' ' ~ m.sectors|join(' '))|lower }}">
+      <div class="avatar" aria-hidden="true">{{ m.name.split()|map('first')|join }}</div>
+      <h3>{{ m.name }}</h3>
+      <p class="muted">{{ m.title }}</p>
+      <p class="highlight">{{ m.highlight }}</p>
+      <div class="tags">{% for s in m.sectors %}<span class="tag">{{ s }}</span>{% endfor %}</div>
+      <button class="btn btn-ghost btn-small" data-intro="mentor" data-name="{{ m.name }}">Request mentorship</button>
+    </div>
+    {% endfor %}
+  </div>
+  <p class="empty" id="mentorEmpty" hidden>No mentors match this search.</p>
+</section>
+
+<section id="investors" class="container section">
+  <div class="section-head">
+    <h2>Investors</h2>
+    <div class="controls">
+      <input class="search" id="investorSearch" type="search" placeholder="Search by name or fund" aria-label="Search investors">
+      <select id="investorSector" aria-label="Filter by sector">
+        <option value="">All sectors</option>
+        {% for s in investor_sectors %}<option>{{ s }}</option>{% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class="list" id="investorList">
+    {% for inv in data.investors|sort(attribute='lead_investments', reverse=True) %}
+    <div class="list-row" data-search="{{ (inv.name ~ ' ' ~ inv.fund)|lower }}" data-sectors="{{ inv.sectors|join('|') }}">
+      <div>
+        <h3>{{ inv.name }}</h3>
+        <p class="muted">{{ inv.title }}, {{ inv.fund }} · {{ inv.city }}</p>
+      </div>
+      <div class="tags">{% for s in inv.sectors %}<span class="tag">{{ s }}</span>{% endfor %}</div>
+      <div class="muted small">{{ inv.stages|join(', ') }}<br>{{ inv.lead_investments }} lead investments</div>
+      <button class="btn btn-small" data-intro="investor" data-name="{{ inv.name }}">Request intro</button>
+    </div>
+    {% endfor %}
+  </div>
+  <p class="empty" id="investorEmpty" hidden>No investors match these filters.</p>
+</section>
+
+<section id="perks" class="container section">
+  <h2>Perks and credits</h2>
+  <div class="grid grid-3">
+    {% for p in data.perks %}
+    <details class="card perk">
+      <summary>
+        <span class="tag">{{ p.tag }}</span>
+        <h3>{{ p.name }}</h3>
+        <p class="muted">{{ p.category }}</p>
+        <p class="highlight">{{ p.offer }}</p>
+      </summary>
+      <ol>{% for step in p.steps %}<li>{{ step }}</li>{% endfor %}</ol>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="events" class="container section">
+  <h2>Upcoming events</h2>
+  <div class="grid grid-2">
+    {% for e in data.events %}
+    {% set d = e.date.split('-') %}
+    <div class="card event">
+      <div class="event-date"><strong>{{ d[2]|int }}</strong><span>{{ ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d[1]|int - 1] }} {{ d[0] }}</span></div>
+      <div>
+        <h3>{{ e.title }}</h3>
+        <p class="muted">{{ e.time }} · {{ e.location }} · {{ e.host }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<dialog id="introDialog" class="dialog">
+  <form id="introForm" class="form">
+    <h2 id="introTitle">Request an introduction</h2>
+    <input type="hidden" name="target_type">
+    <input type="hidden" name="target_name">
+    <div class="field"><label for="introEmail">Your email</label><input id="introEmail" name="email" type="email" required></div>
+    <div class="field"><label for="introMessage">Message</label><textarea id="introMessage" name="message" required maxlength="2000"></textarea></div>
+    <p class="error" id="introError" hidden></p>
+    <div class="dialog-actions">
+      <button type="button" class="btn btn-ghost" id="introCancel">Cancel</button>
+      <button type="submit" class="btn">Send request</button>
+    </div>
+  </form>
+  <div id="introDone" hidden class="center">
+    <h2>Request sent</h2>
+    <p class="muted">The program team will follow up by email.</p>
+    <button type="button" class="btn" id="introClose">Close</button>
+  </div>
+</dialog>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/community.js') }}"></script>{% endblock %}
