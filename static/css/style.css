@@ -72,6 +72,8 @@ code { background: var(--accent-soft); padding: 1px 6px; border-radius: 4px; fon
 .checklist { list-style: none; padding: 0; columns: 2; }
 .checklist li { padding: 6px 0 6px 28px; position: relative; break-inside: avoid; }
 .checklist li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.team-photo { margin: 0; padding: 24px; background: rgb(247, 248, 253); }
+.team-photo img { display: block; width: 100%; max-width: 900px; height: auto; margin: 0 auto; }
 .cta-band { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 56px 0; }
 .pill-nav { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
 .pill-nav a { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; text-decoration: none; color: var(--ink); font-size: 0.9rem; }
