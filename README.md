@@ -68,7 +68,8 @@ pytest
 ├── data/community.json Fictional mentors, investors, startups, perks and events
 ├── templates/          Jinja templates sharing one base layout
 ├── static/             CSS, JavaScript and a local copy of Chart.js
-└── tests/              Route, validation, security and scoring tests
+├── tests/              Route, validation, security and scoring tests
+└── archive/v1-original The first version, with a comparison to this one
 ```
 
 ## Tools
